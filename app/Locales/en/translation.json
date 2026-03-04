@@ -1,0 +1,506 @@
+{
+  "navbar": {
+    "home": "Home",
+    "blogs": "Blogs",
+    "about": "About Us",
+    "services": "Courses",
+    "contact": "Contact",
+    "links": "LinkTree",
+    "seo_description": "WeMisc IT provides the best technology solutions, cloud services, and professional IT consulting.",
+    "seo_keywords": "IT Services, Cloud Solutions, Tech Consulting, WeMisc"
+  },
+  "megaMenu": {
+    "trigger": "All Wemisc",
+    "viewSitemap": "VIEW SITEMAP",
+    "sections": {
+      "marketing": "Marketing",
+      "pms": "PMS",
+      "iotBusiness": "IOT & Business",
+      "courses": "Courses"
+    },
+    "items": {
+      "home": "Home",
+      "services": "Services",
+      "blogs": "Blogs",
+      "about": "About",
+      "contact": "Contact us",
+      "solutions": "Solutions",
+      "courses": "Courses",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "clientsPartners": "Clients and partners",
+      "course": "Course"
+    }
+  },
+  "slider": {
+    "error": "Error loading slider",
+    "noSliders": "No sliders available",
+    "watchVideo": "Watch Video",
+    "download": "Download File",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "explore": "Explore",
+    "discover": "Discover"
+  },
+  "about": {
+    "tag": "ABOUT US",
+    "title1": "We Provide Best",
+    "titleHighlight": "Education",
+    "title2": "Services For You",
+    "tabs": {
+      "about": "About Wemisc",
+      "mission": "Our Mission",
+      "vision": "Our Vision"
+    },
+    "title": " About Us",
+    "keywords": "About Us, Wemisc, Education, Courses, Training",
+    "author": "Wemisc",
+    "description": "About Us, Wemisc, Education, Courses, Training",
+    "ogTitle": "About Us, Wemisc, Education, Courses, Training",
+    "ogDescription": "About Us, Wemisc, Education, Courses, Training",
+    "ogType": "website",
+    "ogUrl": "https://wemisc.com",
+    "ogImage": "https://wemisc.com/images/og-image.jpg",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "About Us, Wemisc, Education, Courses, Training",
+    "twitterDescription": "About Us, Wemisc, Education, Courses, Training",
+    "twitterImage": "https://wemisc.com/images/og-image.jpg",
+    "tabContent": {
+      "about": {
+        "text": "Wemisc is an online learning platform dedicated to helping learners build practical skills through high-quality courses and hands-on guidance.",
+        "points": [
+          "Expert-led learning experiences",
+          "Flexible online courses",
+          "Practical, career-focused content"
+        ]
+      },
+      "mission": {
+        "text": "Our mission is to make learning accessible and effective by delivering structured courses, supportive mentoring, and a smooth learning journey for every student.",
+        "points": [
+          "Make education accessible for everyone",
+          "Support learners with clear learning paths",
+          "Continuously improve course quality"
+        ]
+      },
+      "vision": {
+        "text": "Our vision is to become a trusted destination for online education, empowering learners and teams to grow, upskill, and achieve their goals.",
+        "points": [
+          "Build a strong learning community",
+          "Enable lifelong learning and upskilling",
+          "Create measurable learning outcomes"
+        ]
+      }
+    },
+    "learnMore": "Learn More",
+    "imageAlt": "About Wemisc"
+  },
+  "features": {
+    "tag": "FEATURES",
+    "title": "Emerging Technologies and Trends in Software Development",
+    "imageAlt": "Feature",
+    "items": [
+      {
+        "title": "Web Development",
+        "description": "Learn modern web development with practical projects and a clear learning path."
+      },
+      {
+        "title": "Top Instructors",
+        "description": "Learn from experienced instructors who focus on real skills and best practices."
+      },
+      {
+        "title": "Online Certificates",
+        "description": "Earn certificates after completion to showcase your skills and progress."
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "readMore": "Read More",
+    "readLess": "Read Less",
+    "events": {
+      "title": "Events Management",
+      "body": "Including: In-person & Virtual events such as standalone webinars, webinar series, symposiums,",
+      "more": "conferences, Ad-boards and medical writing services. CPD certification for events and team building activities."
+    },
+    "clinical": {
+      "title": "Clinical Services Facilitation & Educational Tools",
+      "body": "We have a number of educational tools tailored to provide access to up-to-date clinical information, whether clinical studies or medical conferences",
+      "more": "Additionally we cater for different forms of clinical services to facilitate its execution for the medical or pharmaceutical industry."
+    },
+    "marketing": {
+      "title": "Medical Marketing",
+      "body": "We can conduct marketing campaigns and social medical campaigns for the medical community, examples include: disease awareness campaigns and social media account boosting.",
+      "more": "In addition to these services we can facilitate regular media access through our network and connections to Journalists."
+    }
+  },
+  "loading": "Loading...",
+  "contactForm": {
+    "tag": "Get In Touch",
+    "title": " Contact Us",
+    "labelName": "Full Name",
+    "labelPhone": "Phone Number",
+    "labelEmail": "Email Address",
+    "labelMessage": "Message",
+    "placeholderName": "Enter your full name",
+    "placeholderPhone": "Enter your phone number",
+    "placeholderEmail": "Enter your email address",
+    "placeholderMessage": "Tell us about your project or inquiry...",
+    "buttonSend": "Send Message",
+    "buttonSending": "Sending...",
+    "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+    "errorValidation": "Please fill in all required fields correctly.",
+    "errorGeneral": "Something went wrong. Please try again later.",
+    "errorNameRequired": "Name is required",
+    "errorNameTooShort": "Name must be at least 2 characters",
+    "errorPhoneRequired": "Phone number is required",
+    "errorPhoneInvalid": "Please enter a valid phone number",
+    "errorEmailRequired": "Email address is required",
+    "errorEmailInvalid": "Please enter a valid email address",
+    "errorMessageRequired": "Message is required",
+    "errorMessageTooShort": "Message must be at least 10 characters",
+    "labelMath": "Math Question",
+    "placeholderMath": "Enter the answer to the math question",
+    "errorMathRequired": "Math question is required",
+    "errorMathIncorrect": "Math question is incorrect"
+  },
+  "footer": {
+    "companyName": "Wemisc Company - Courses ",
+    "legalText": "A limited liability free zone company, incorporated pursuant to the Rules & Regulations of Fujairah Media Freezone, Creative City",
+    "about": "About Us",
+    "aboutDescription": "We are a leading company dedicated to providing innovative solutions and exceptional services to our clients worldwide.",
+    "mission": "Our mission is to deliver excellence in every project we undertake.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "address": "123 Business Street, City Center, Country",
+    "email": "info@company.com",
+    "phone": "+1 (555) 123-4567",
+    "followUs": "Follow Us",
+    "stayConnected": "Stay connected with us for the latest updates and news.",
+    "newsletterTitle": "Newsletter",
+    "newsletterDescription": "Subscribe to our newsletter to receive the latest updates and exclusive offers.",
+    "newsletterPlaceholder": "Enter your email address",
+    "newsletterSubscribe": "Subscribe",
+    "newsletterSending": "Sending...",
+    "newsletterSuccess": "Successfully subscribed to newsletter!",
+    "newsletterError": "Failed to subscribe. Please try again.",
+    "newsletterErrorRequired": "Email address is required",
+    "newsletterErrorInvalid": "Please enter a valid email address",
+    "newsletterErrorConflict": "This email is already subscribed",
+    "newsletterErrorAuth": "Authentication error. Please try again.",
+    "newsletterErrorServer": "Server error. Please try again later.",
+    "newsletterErrorTimeout": "Request timeout. Please check your connection.",
+    "newsletterErrorNetwork": "Network error. Please check your connection.",
+    "copyright": "© 2025 Prime Creative. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "sitemap": "Sitemap",
+    "mathCaptchaLabel": "Verify you're human",
+    "mathPlaceholder": "Enter answer",
+    "accreditations": "Accreditations and Certifications"
+  },
+  "headHome": {
+    "title": "Home - Wemisc Company - Courses",
+    "description": "Welcome to Wemisc Company - Courses, your trusted partner for innovative solutions and exceptional services.",
+    "keywords": "Wemisc, Company, Courses, Innovative Solutions, Exceptional Services"
+  },
+  "headServices": {
+    "title2": "Courses",
+    "title": "Courses",
+    "description": "Browse all our latest services and updates",
+    "keywords": "services, updates, latest, articles",
+    "all": "All"
+  },
+  "courses": {
+    "loadError": "Failed to load courses",
+    "detailsLoadError": "Failed to load course details",
+    "notFound": "Course not found",
+    "noCourses": "No courses found",
+    "showing": "Showing",
+    "of": "Of",
+    "results": "Results",
+    "searchPlaceholder": "Search Courses...",
+    "viewDetails": "View Details",
+    "prev": "Previous",
+    "next": "Next",
+    "back": "Back",
+    "backToCourses": "Back to Courses",
+    "overview": "Course Overview",
+    "details": "Course Details",
+    "category": "Category",
+    "price": "Price",
+    "currency": "EGP",
+    "free": "Free",
+    "enrollNow": "Enroll Now",
+    "timeline": "Timeline",
+    "timelineValue": "6 Months",
+    "availability": "Availability",
+    "availabilityValue": "Starting Next Month",
+    "guarantee": "Guarantee",
+    "guaranteeValue": "Accredited certificate"
+  },
+  "headContact": {
+    "title": "Contact Us",
+    "description": "Contact us for any questions or inquiries",
+    "keywords": "contact, us, questions, inquiries"
+  },
+  "partners": {
+    "title": "Partners"
+  },
+  "headBlogs": {
+    "title": "Blogs",
+    "comingSoon": "Coming Soon"
+  },
+  "blogs": {
+    "title2": "Our Blogs",
+    "title": " Wemisc - Our Blogs",
+    "description": "Discover the latest insights and stories from our team",
+    "loadError": "Failed to load blogs",
+    "readMore": "Read More",
+    "minRead": "min read",
+    "comingSoonTitle": "Exciting Blogs Coming Soon!",
+    "comingSoonMessage": "We're working on creating amazing blog posts. Stay tuned!",
+    "all": "All",
+    "noBlogs": "No blogs found",
+    "showing": "Showing",
+    "of": "Of",
+    "results": "Results",
+    "searchPlaceholder": "Search Blogs...",
+    "viewDetails": "View Details",
+    "prev": "Previous",
+    "next": "Next",
+    "notFound": "Blog not found",
+    "detailsLoadError": "Failed to load blog details",
+    "back": "Back",
+    "backToBlogs": "Back to Blogs",
+    "overview": "Blog Overview",
+    "details": "Blog Details",
+    "category": "Category"
+  },
+  "leadMagnet": {
+    "labelEmail": "Email Address",
+    "placeholderEmail": "Enter your email address",
+    "buttonSubmit": "Submit",
+    "buttonSending": "Sending...",
+    "successMessage": "Thank you! Your email has been submitted successfully.",
+    "errorValidation": "Please fill in all required fields correctly.",
+    "errorGeneral": "Something went wrong. Please try again later.",
+    "errorEmailRequired": "Email address is required",
+    "errorEmailInvalid": "Please enter a valid email address"
+  },
+  "linkTree": {
+    "title": "Connect With Us",
+    "connectText": "Connect with us on your favorite platform",
+    "noLinks": "No social media links available",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "twitter": "Twitter",
+    "whatsapp": "WhatsApp"
+  },
+  "languageSection": {
+    "title": "Courses",
+    "subtitle": "Explore our courses and learn new skills "
+  },
+  "infinitySlider": {
+    "items": {
+      "webDev": "Web Development",
+      "cloudSolutions": "Cloud Solutions",
+      "cybersecurity": "Cybersecurity",
+      "softwareEng": "Software Engineering",
+      "itConsulting": "IT Consulting",
+      "mobileApps": "Mobile App Development",
+      "devOps": "DevOps & Automation",
+      "networkInfra": "Network Infrastructure"
+    }
+  },
+  "payment": {
+    "canceled_title": "Payment Canceled",
+    "canceled_desc": "The transaction was cancelled. No funds have been deducted from your account.",
+    "redirect_text": "Redirecting to home in",
+    "seconds": "s",
+    "btn_home": "Return Home Now",
+    "btn_browse": "Browse Courses",
+    "toast_msg": "Payment canceled. Redirecting in {{count}}s..."
+  },
+  "payment_failed": {
+    "title": "Payment Failed",
+    "desc": "We couldn't process your payment. Please check your card details or try a different method.",
+    "redirect_text": "Redirecting to checkout in",
+    "seconds": "s",
+    "btn_retry": "Try Again",
+    "btn_browse": "Browse Courses",
+    "toast_msg": "Payment failed. Redirecting in {{count}}s..."
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is currently empty.",
+    "browseServices": "Browse services",
+    "noImage": "No image",
+    "pricePerPerson": "Price per attendee",
+    "attendees": "Attendees",
+    "remove": "Remove",
+    "total": "Total",
+    "summary": "Order Summary",
+    "subTotal": "Subtotal",
+    "goToCheckout": "Go to checkout",
+    "addToCart": "Add to Cart",
+    "selectAttendees": "Select number of attendees",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "added": "Course added to cart successfully",
+    "confirmAdd": "Confirm",
+    "attendeesTitle": "Number of Attendees",
+    "attendeesDescription": "Please select the number of attendees for this course."
+  },
+  "checkout": {
+    "title": "Checkout",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "paymentMethod": "Payment method",
+    "coupon": "Coupon code",
+    "couponPlaceholder": "Enter coupon code (optional)",
+    "applyCoupon": "Apply",
+    "submitting": "Processing...",
+    "submit": "Place order",
+    "orderSummary": "Order summary",
+    "subTotal": "Subtotal",
+    "discount": "Discount",
+    "total": "Total",
+    "paymentMethods": "Available payment methods",
+    "loadingMethods": "Loading payment methods...",
+    "instapayTitle": "InstaPay payment",
+    "instapayText": "Please use the following link to complete the transfer, then upload the payment receipt.",
+    "instapayInstructions": "Please complete the transfer then upload the receipt.",
+    "uploadReceipt": "Upload payment receipt",
+    "couponApplied": "Coupon applied successfully",
+    "couponError": "Invalid coupon code",
+    "emptyCart": "Your cart is empty",
+    "error": "Failed to create order",
+    "receiptUploaded": "Receipt uploaded successfully",
+    "uploadError": "Failed to upload payment receipt",
+    "selectPaymentMethod": "Please select a payment method",
+    "invalidItems": "Invalid items in cart",
+    "noMethods": "No payment methods available",
+    "invalidPaymentMethod": "Invalid payment method selected",
+    "validationError": "Please check your input and try again",
+    "couponRequired": "Please enter a coupon code",
+    "removeCoupon": "Remove",
+    "couponRemoved": "Coupon removed",
+    "couponAppliedSuccess": "Coupon applied successfully! Discount:",
+    "send": "Send",
+    "uploading": "uploading...",
+    "unexpectedResponse": "Unexpected payment page response.",
+    "paymentError": "Failed to start online payment.",
+    "selectImage": "Click to select an image",
+    "preview": "Preview"
+  },
+  "invoice": {
+    "title": "Order invoice",
+    "orderId": "Order ID",
+    "status": "Status",
+    "customer": "Customer details",
+    "payment": "Payment",
+    "method": "Method",
+    "token": "Transaction token",
+    "item": "Item",
+    "attendees": "Attendees",
+    "pricePerUnit": "Price / attendee",
+    "total": "Total",
+    "subTotal": "Subtotal",
+    "discount": "Discount",
+    "backHome": "Back to home",
+    "backToServices": "Back to services",
+    "loading": "Loading...",
+    "error": "Failed to load order details",
+    "print": "Print Invoice",
+    "orderItems": "Order Items",
+    "thankYou": "Thank you for your order!"
+  },
+  "common": {
+    "close": "Close"
+  },
+  "accreditations": {
+    "title": "Wemisc - Accreditations & Certifications",
+    "description": "Browse all our latest services and updates",
+    "keywords": "services, updates, latest, articles",
+    "all": "All"
+  },
+  "sitemap": {
+    "description": "Browse our complete site structure and find what you're looking for",
+    "mainPages": "Main Pages",
+    "xmlSitemaps": "XML Sitemaps",
+    "error": "Failed to load sitemap"
+  },
+  "specialServices": {
+    "subtitle": "# EXPLORE OUR IT SERVICES",
+    "title1": "Reliable IT Solutions for",
+    "titleHighlight": "Better & Smarter",
+    "exploreMore": "Explore More",
+    "learnMore": "Learn More",
+    "managedIT": {
+      "title": "Managed IT Services",
+      "description": "Complete IT infrastructure management with 24/7 monitoring, proactive maintenance, technical support, and system optimization to ensure maximum uptime and business continuity."
+    },
+    "cloudComputing": {
+      "title": "Cloud Computing Solutions",
+      "description": "Enterprise cloud migration, AWS/Azure deployment, scalable cloud storage, disaster recovery, and cloud security solutions to modernize your IT infrastructure."
+    },
+    "cybersecurity": {
+      "title": "Cybersecurity & Protection",
+      "description": "Advanced threat detection, firewall configuration, penetration testing, security audits, compliance management (ISO 27001), and data encryption to protect your digital assets."
+    },
+    "itConsulting": {
+      "title": "IT Consulting & Strategy",
+      "description": "Strategic IT planning, digital transformation roadmaps, technology assessment, infrastructure optimization, and IT budget planning to align technology with business goals."
+    },
+    "softwareDev": {
+      "title": "Custom Software Development",
+      "description": "Bespoke software solutions, web applications, mobile apps (iOS/Android), API development, system integration, and enterprise software tailored to your business needs."
+    },
+    "networkInfra": {
+      "title": "Network Infrastructure",
+      "description": "Network design and implementation, server setup, VPN configuration, network security, bandwidth optimization, and infrastructure monitoring for reliable connectivity."
+    }
+  },
+  "aboutTwo": {
+    "tag": "ABOUT OUR IT COMPANY",
+    "title": "Delivering IT Excellence For 25 Years.",
+    "description": "For over two decades, we've been empowering businesses with cutting-edge IT solutions. From cloud infrastructure to custom software development, we transform digital challenges into competitive advantages through innovative technology and expert consulting.",
+    "feature1": "Enterprise-grade IT infrastructure and cloud solutions deployment",
+    "feature2": "Custom web & mobile application development with modern frameworks",
+    "feature3": "Advanced cybersecurity, network design, and IT consulting services",
+    "button": "LEARN MORE",
+    "imageAlt": "Wemisc IT Solutions - 25 Years of Technology Excellence"
+  },
+  "notFound": {
+    "title": "Oops! Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. Don't worry, let's get you back on track!",
+    "goHome": "Go Home",
+    "contactUs": "Contact Us",
+    "helpfulLinks": "You might find these helpful:",
+    "services": "Services",
+    "blogs": "Blogs",
+    "about": "About Us"
+  },
+  "howItWorks": {
+    "tag": "WORK PROCESS",
+    "title1": "How To Work",
+    "title2": "It!",
+    "step1": {
+      "title": "Select a project",
+      "description": "Continua scale empowered metrics with cost effective innovation."
+    },
+    "step2": {
+      "title": "Project analysis",
+      "description": "Continua scale empowered metrics with cost effective innovation."
+    },
+    "step3": {
+      "title": "Plan Execute",
+      "description": "Continua scale empowered metrics with cost effective innovation."
+    },
+    "step4": {
+      "title": "Deliver result",
+      "description": "Continua scale empowered metrics with cost effective innovation."
+    }
+  }
+}
