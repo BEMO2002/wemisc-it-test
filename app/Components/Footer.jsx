@@ -320,7 +320,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/services"
+                    href="/courses"
                     className="text-black hover:text-secondary transition-colors duration-200 text-md"
                   >
                     {t("navbar.services")}

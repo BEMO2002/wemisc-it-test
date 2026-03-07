@@ -170,3 +170,120 @@ export async function fetchItemTypeItems(typeId, params = {}) {
     return null;
   }
 }
+/**
+ * Fetch blogs with search and pagination support
+ */
+export async function fetchBlogs(params = {}) {
+  try {
+    const url = new URL(`${baseUrl}/blogs`);
+    Object.keys(params).forEach((key) => {
+      if (params[key]) url.searchParams.append(key, params[key]);
+    });
+
+    const res = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data || null;
+  } catch (err) {
+    console.error("fetchBlogs Error:", err);
+    return null;
+  }
+}
+
+/**
+ * Fetch specific blog details by slug
+ */
+export async function fetchBlogDetails(slug) {
+  if (!slug) return null;
+
+  const decodedSlug = decodeURIComponent(slug);
+
+  try {
+    const res = await fetch(`${baseUrl}/blog/${decodedSlug}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) {
+      console.error(
+        `fetchBlogDetails failed: ${res.status} for ${decodedSlug}`,
+      );
+      return null;
+    }
+
+    const json = await res.json();
+    return json?.data || null;
+  } catch (err) {
+    console.error("fetchBlogDetails Error:", err);
+    return null;
+  }
+}
+
+/**
+ * Fetch blog categories
+ */
+export async function fetchBlogCategories() {
+  try {
+    const res = await fetch(`${baseUrl}/categories`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return [];
+    const json = await res.json();
+    // Categories are often wrapped in data.data or data
+    const list = json?.data?.data || json?.data || [];
+    return Array.isArray(list) ? list : [];
+  } catch (err) {
+    console.error("fetchBlogCategories Error:", err);
+    return [];
+  }
+}
+
+/**
+ * Fetch blogs belonging to a specific category
+ */
+export async function fetchCategoryBlogs(categoryId, params = {}) {
+  try {
+    const url = new URL(`${baseUrl}/category-blogs/${categoryId}`);
+    Object.keys(params).forEach((key) => {
+      if (params[key]) url.searchParams.append(key, params[key]);
+    });
+
+    const res = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data || null;
+  } catch (err) {
+    console.error("fetchCategoryBlogs Error:", err);
+    return null;
+  }
+}
