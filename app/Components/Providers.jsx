@@ -1,7 +1,7 @@
 "use client";
 
 import { Toaster } from "react-hot-toast";
-import ApiAuthContextProvider from "../Context/AuthContext";
+import ApiAuthContextProvider from "../../AuthContext";
 import { CartProvider } from "../Context/CartContext";
 import SettingsProvider from "../Context/SettingContext";
 

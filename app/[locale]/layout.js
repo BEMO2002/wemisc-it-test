@@ -77,7 +77,7 @@ export default async function RootLayout(props) {
         <NextIntlClientProvider messages={messages}>
           <Providers initialSettings={globalSettings}>
             <Navbar />
-            <main className="min-h-screen">{children}</main>
+            <main className="">{children}</main>
             <Footer />
           </Providers>
         </NextIntlClientProvider>

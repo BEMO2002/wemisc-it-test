@@ -24,7 +24,7 @@ const Cart = () => {
   const isEmpty = !items || items.length === 0;
 
   return (
-    <div className=" pt-10 pb-12">
+    <div className="bg-gray-50 min-h-[60vh] pt-10 pb-20">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-primary">
           {t("cart.title")}

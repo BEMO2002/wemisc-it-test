@@ -15,7 +15,7 @@ import {
 import { useTranslations, useLocale } from "next-intl";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { ApiAuthContext } from "../Context/AuthContext";
+import { ApiAuthContext } from "../../AuthContext";
 import { useSettings } from "../Context/SettingContext";
 import { Link } from "../../i18n/routing";
 import wave from "../../public/Home/footer_shape_1.png";
