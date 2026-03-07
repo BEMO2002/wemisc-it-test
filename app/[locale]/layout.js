@@ -72,6 +72,7 @@ export default async function RootLayout(props) {
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
           <Providers initialSettings={globalSettings}>

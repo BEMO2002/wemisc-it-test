@@ -85,8 +85,8 @@ const SliderHome = ({ initialSliders = [] }) => {
                       }`}
                     >
                       {/* Title */}
-                      <h1 className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-baseTwo mb-6 leading-tight">
-                        <span className="block">
+                      <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-baseTwo mb-6 leading-tight">
+                        <span className="">
                           {isRTL ? slider.title_ar : slider.title_en}
                         </span>
                       </h1>

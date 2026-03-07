@@ -6,6 +6,7 @@ const CART_STORAGE_KEY = "wemisk_cart";
 
 const CartProviderInner = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Load from localStorage once on mount
   useEffect(() => {
@@ -19,17 +20,21 @@ const CartProviderInner = ({ children }) => {
       }
     } catch (e) {
       console.error("Failed to parse cart from localStorage", e);
+    } finally {
+      setIsInitialized(true);
     }
   }, []);
 
-  // Persist to localStorage whenever cart changes
+  // Persist to localStorage whenever cart changes, but ONLY after initialization
   useEffect(() => {
+    if (!isInitialized) return;
+
     try {
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
     } catch (e) {
       console.error("Failed to save cart to localStorage", e);
     }
-  }, [items]);
+  }, [items, isInitialized]);
 
   const addItem = useCallback((item) => {
     setItems((prev) => {

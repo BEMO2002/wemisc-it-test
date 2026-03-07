@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import React from "react";
 import { Link, usePathname, useRouter } from "../../i18n/routing";
@@ -108,6 +108,12 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [isMegaMobileOpen, setIsMegaMobileOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations();
@@ -173,7 +179,7 @@ const Navbar = () => {
                 <img
                   src={settings.main_logo_light}
                   alt="Logo"
-                  className="w-40 object-cover"
+                  className="md:w-40 w-35 object-cover"
                 />
               )}
               {/* <img src={logo} alt="Logo" className="w-40 object-cover" /> */}
@@ -231,7 +237,7 @@ const Navbar = () => {
             <Link href="/cart" className="text-baseTwo hover:text-primary">
               <div className="relative">
                 <HiOutlineShoppingBag size={30} className="text-primary" />
-                {items.length > 0 && (
+                {isMounted && items.length > 0 && (
                   <span className=" text-sm font-medium bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center absolute -top-2 -right-2">
                     {items.length}
                   </span>

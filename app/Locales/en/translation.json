@@ -332,6 +332,7 @@
   },
   "cart": {
     "title": "Shopping Cart",
+    "description": "View your shopping cart and complete your purchase for our training courses.",
     "empty": "Your cart is currently empty.",
     "browseServices": "Browse services",
     "noImage": "No image",
