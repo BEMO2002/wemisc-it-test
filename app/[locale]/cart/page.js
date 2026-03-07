@@ -9,12 +9,15 @@ export async function generateMetadata({ params }) {
   let siteName = "WeMisc IT";
   let description = t("cart.description") || t("contactForm.description");
   let settings = null;
-
+  let ogImage = "";
   try {
     settings = await fetchSettings();
     if (settings) {
       siteName =
         locale === "ar" ? settings.site_name_ar : settings.site_name_en;
+    }
+    if (settings?.main_logo_light) {
+      ogImage = settings.main_logo_light;
     }
   } catch (err) {
     console.error("Error fetching settings for metadata", err);
@@ -29,13 +32,13 @@ export async function generateMetadata({ params }) {
       title: title,
       description: description,
       type: "website",
-      ...(settings?.main_logo_light && { images: [settings.main_logo_light] }),
+      ...(ogImage && { images: [ogImage] }),
     },
     twitter: {
       card: "summary_large_image",
       title: title,
       description: description,
-      ...(settings?.main_logo_light && { images: [settings.main_logo_light] }),
+      ...(ogImage && { images: [ogImage] }),
     },
   };
 }

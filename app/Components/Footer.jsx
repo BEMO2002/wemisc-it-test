@@ -6,7 +6,6 @@ import {
   FaPhoneAlt,
   FaPaperPlane,
   FaSpinner,
-  FaCalculator,
   FaFacebookF,
   FaInstagram,
   FaTwitter,
