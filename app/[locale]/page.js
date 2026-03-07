@@ -1,11 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import SliderServer from "../HomePage/SliderServer";
 import { fetchSettings } from "../lib/server-api";
-// import SpecialServices from "../HomePage/SpecialServices";
-// import HowItWorks from "../HomePage/HowItWorks";
-// import AboutTwo from "../HomePage/AboutTwo";
-// import InfinitySlider from "../HomePage/InfinitySlider";
-// import Services from "../Services/Services";
+import SpecialServices from "../HomePage/SpecialServices";
+import HowItWorks from "../HomePage/HowItWorks";
+import AboutTwo from "../HomePage/AboutTwo";
+import InfinitySlider from "../HomePage/InfinitySlider";
+import Services from "../CoursesPage/Services";
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
@@ -61,13 +61,11 @@ export default function MainHome() {
   return (
     <>
       <SliderServer />
-
-      {/* قم بفك التعليق (Uncomment) عن المكونات التالية بمجرد إضافتها للمشروع */}
-      {/* <SpecialServices /> */}
-      {/* <HowItWorks /> */}
-      {/* <AboutTwo /> */}
-      {/* <InfinitySlider /> */}
-      {/* <Services /> */}
+      <SpecialServices />
+      <HowItWorks />
+      <AboutTwo />
+      <InfinitySlider />
+      <Services />
     </>
   );
 }

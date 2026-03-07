@@ -180,7 +180,7 @@ const Services = () => {
 
   return (
     <>
-      <section className="relative bg-[#F8F6F8] pt-16 px-4 md:px-8 min-h-screen overflow-hidden  py-10">
+      <section className="relative  pt-16 px-4 md:px-8 min-h-screen overflow-hidden  py-10">
         {/* Animated Particle Network Background */}
         {/* <ParticleNetwork /> */}
 

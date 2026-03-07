@@ -145,10 +145,10 @@ const Navbar = () => {
   const isActive = (path) => {
     return pathname === path;
   };
-
+  // stop scroll when change language (important)
   const toggleLanguage = () => {
     const newLang = locale === "en" ? "ar" : "en";
-    router.replace(pathname, { locale: newLang });
+    router.replace(pathname, { locale: newLang, scroll: false });
   };
 
   const NavLink = ({ to, children }) => (

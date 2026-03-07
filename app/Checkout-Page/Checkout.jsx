@@ -564,7 +564,7 @@ const Checkout = () => {
                 {t("checkout.instapayTitle", "InstaPay payment")}
               </h3>
               <img
-                src={instapay}
+                src={instapay.src}
                 alt="instapay"
                 className="w-30 h-30 object-contain"
               />
