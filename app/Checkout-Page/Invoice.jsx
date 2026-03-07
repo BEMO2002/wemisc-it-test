@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { ApiAuthContext } from "../Context/AuthContext";
+import { useParams, useSearchParams } from "next/navigation";
+import { Link } from "../../i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
+import { ApiAuthContext } from "../../AuthContext";
 import { useCart } from "../Context/CartContextBase";
 
 const Invoice = () => {
   const { orderId: paramOrderId } = useParams();
-  const location = useLocation();
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n?.language === "ar";
+  const searchParams = useSearchParams();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   const { XTenantID, XApiKey, baseUrl } = useContext(ApiAuthContext);
   const { clearCart } = useCart();
 
@@ -20,20 +22,9 @@ const Invoice = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       // Get order_id from URL params or query string
-      const searchParams = new URLSearchParams(location.search);
       const queryOrderId =
         searchParams.get("order_id") || searchParams.get("orderId");
       const orderId = paramOrderId || queryOrderId;
-
-      console.log("Invoice - Full URL:", window.location.href);
-      console.log("Invoice - location.search:", location.search);
-      console.log(
-        "Invoice - All query params:",
-        Object.fromEntries(searchParams)
-      );
-      console.log("Invoice - paramOrderId:", paramOrderId);
-      console.log("Invoice - queryOrderId:", queryOrderId);
-      console.log("Invoice - final orderId:", orderId);
 
       if (!orderId) {
         setError(t("invoice.noOrderId", "No order ID provided"));
@@ -65,15 +56,7 @@ const Invoice = () => {
       }
     };
     fetchOrder();
-  }, [
-    paramOrderId,
-    location.search,
-    baseUrl,
-    XTenantID,
-    XApiKey,
-    t,
-    clearCart,
-  ]);
+  }, [paramOrderId, searchParams, baseUrl, XTenantID, XApiKey, t, clearCart]);
 
   const handlePrint = () => {
     window.print();
@@ -125,7 +108,7 @@ const Invoice = () => {
           </div>
           <p className="text-red-600 mb-6 text-lg font-semibold">{error}</p>
           <Link
-            to="/"
+            href="/"
             className="inline-flex px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors"
           >
             {t("invoice.backHome", "Back to home")}
@@ -210,7 +193,7 @@ const Invoice = () => {
                   </p>
                   <span
                     className={`inline-flex px-4 py-1.5 rounded-full text-xs font-semibold border ${getStatusColor(
-                      order.payment_status
+                      order.payment_status,
                     )}`}
                   >
                     {order.payment_status}
@@ -325,7 +308,7 @@ const Invoice = () => {
                       {order.items?.map((orderItem, index) => {
                         const item = orderItem.item;
                         const title =
-                          i18n.language === "ar"
+                          locale === "ar"
                             ? item?.title_ar || item?.title_en
                             : item?.title_en || item?.title_ar;
                         return (
@@ -413,7 +396,7 @@ const Invoice = () => {
           {/* Back Button - Hidden on Print */}
           <div className="no-print mt-6 flex justify-center">
             <Link
-              to="/services"
+              href="/courses"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white hover:bg-gray-800 transition-all shadow-sm"
             >
               <svg

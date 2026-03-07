@@ -1,29 +1,30 @@
 import { getTranslations } from "next-intl/server";
 import { fetchSettings } from "../../lib/server-api";
-import Cart from "../../Cart-Page/Cart";
+import Checkout from "../../Checkout-Page/Checkout";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale });
 
   let siteName = "WeMisc IT";
-  let description = t("cart.description") || t("contactForm.description");
-  let settings = null;
+  let description = t("checkout.description") || t("contactForm.description");
   let ogImage = "";
+  let settings = null;
+
   try {
     settings = await fetchSettings();
     if (settings) {
       siteName =
         locale === "ar" ? settings.site_name_ar : settings.site_name_en;
-    }
-    if (settings?.main_logo_light) {
-      ogImage = settings.main_logo_light;
+      if (settings.main_logo_light) {
+        ogImage = settings.main_logo_light;
+      }
     }
   } catch (err) {
     console.error("Error fetching settings for metadata", err);
   }
 
-  const title = t("cart.title");
+  const title = t("checkout.title");
 
   return {
     title: title,
@@ -47,10 +48,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function CartPage() {
+export default function CheckoutPage() {
   return (
-    <div className="cart-page-container mt-20">
-      <Cart />
+    <div className="checkout-page-container mt-20">
+      <Checkout />
     </div>
   );
 }

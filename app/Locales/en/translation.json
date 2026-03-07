@@ -354,6 +354,7 @@
   },
   "checkout": {
     "title": "Checkout",
+    "description": "Complete your purchase and secure your spot in our professional training courses.",
     "name": "Full name",
     "email": "Email",
     "phone": "Phone",

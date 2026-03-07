@@ -1,17 +1,19 @@
+"use client";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
-import { ApiAuthContext } from "../Context/AuthContext";
+import { useTranslations, useLocale } from "next-intl";
+import { ApiAuthContext } from "../../AuthContext";
 import { useCart } from "../Context/CartContextBase";
-import { useNavigate } from "react-router-dom";
+import { useRouter, Link } from "../../i18n/routing";
 import toast from "react-hot-toast";
-import instapay from "../assets/Home/InstaPay_Logo.png";
+import instapay from "../../public/Home/InstaPay_Logo.png";
 const Checkout = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n?.language === "ar";
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   const { XTenantID, XApiKey, baseUrl } = useContext(ApiAuthContext);
   const { items, subTotal, clearCart } = useCart();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [form, setForm] = useState({
     name: "",
@@ -59,11 +61,11 @@ const Checkout = () => {
       }
 
       if (!hasStoredItems) {
-        navigate("/", { replace: true });
+        router.replace("/", { locale });
         toast.error(t("checkout.emptyCart", "Your cart is empty"));
       }
     }
-  }, [isCartEmpty, navigate, t]);
+  }, [isCartEmpty, router, t]);
 
   useEffect(() => {
     const fetchMethods = async () => {
@@ -263,7 +265,7 @@ const Checkout = () => {
         );
       } else if (status === "paid") {
         clearCart();
-        navigate(`/invoice/${order_id}`);
+        router.push(`/invoice/${order_id}`);
       } else if (data.payment_url) {
         window.location.href = data.payment_url;
       } else {
@@ -320,7 +322,7 @@ const Checkout = () => {
       setSelectedReceiptFile(null);
       setReceiptPreview(null);
       clearCart();
-      navigate(`/invoice?order_id=${instapayData.order_id}`);
+      router.push(`/invoice?order_id=${instapayData.order_id}`);
     } catch (e) {
       console.error("Upload receipt error", e);
       toast.error(
@@ -530,7 +532,7 @@ const Checkout = () => {
                       {method.banner_en || method.banner_ar ? (
                         <img
                           src={
-                            i18n.language === "ar"
+                            locale === "ar"
                               ? method.banner_ar || method.banner_en
                               : method.banner_en || method.banner_ar
                           }
@@ -540,7 +542,7 @@ const Checkout = () => {
                       ) : null}
                       <div>
                         <p className="text-sm font-semibold text-gray-900">
-                          {i18n.language === "ar"
+                          {locale === "ar"
                             ? method.title_ar || method.title_en
                             : method.title_en || method.title_ar}
                         </p>
@@ -561,7 +563,11 @@ const Checkout = () => {
               <h3 className="text-xl font-bold mb-4 text-gray-900">
                 {t("checkout.instapayTitle", "InstaPay payment")}
               </h3>
-              <img src={instapay} alt="" className="w-30 h-30 object-contain" />
+              <img
+                src={instapay}
+                alt="instapay"
+                className="w-30 h-30 object-contain"
+              />
             </div>
             <p className="text-sm text-gray-600 mb-3">
               {t(
