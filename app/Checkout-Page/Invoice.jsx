@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useSearchParams } from "next/navigation";

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import {
@@ -8,14 +8,19 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
-import { Helmet } from "react-helmet";
 import { Link } from "../../i18n/routing";
 import { useSettings } from "../Context/SettingContext";
 import { useLocale } from "next-intl";
+
 const LinkTree = () => {
   const t = useTranslations();
   const { settings } = useSettings();
   const isRTL = useLocale() === "ar";
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
 
   const facebookUrl = Array.isArray(settings?.facebook)
     ? settings.facebook[0]
@@ -31,12 +36,7 @@ const LinkTree = () => {
     : settings?.whatsapp || null;
 
   const logo = settings?.main_logo_light || null;
-  const metaTitle = isRTL
-    ? settings?.site_name_ar
-    : settings?.site_name_en || t("headHome.title", "Home");
 
-  const metaDesc =
-    settings?.site_description_en || t("contactForm.description");
   const socialLinks = [
     {
       name: t("linkTree.facebook"),
@@ -75,80 +75,64 @@ const LinkTree = () => {
   }
 
   return (
-    <>
-      <Helmet>
-        <title>{`${metaTitle} | ${t("linkTree.title")}`}</title>
-        <meta name="description" content={metaDesc} />
-        <meta
-          property="og:title"
-          content={`${metaTitle} | ${t("linkTree.title")}`}
-        />
-        <meta property="og:description" content={metaDesc} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t("linkTree.title")} />
-        <meta name="twitter:description" content={t("linkTree.description")} />
-      </Helmet>
-      <div
-        className="min-h-screen flex items-center justify-center py-12 px-4"
-        style={{ direction: isRTL ? "rtl" : "ltr" }}
-      >
-        <div className="w-full max-w-lg">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-            {/* Header with Gradient Background */}
-            <div className="w-full bg-third   py-10 flex flex-col items-center justify-center">
-              {/* Logo */}
-              {logo && (
-                <div className="mb-5">
-                  <img
-                    src={logo}
-                    alt="Company Logo"
-                    className="h-20 w-auto object-contain"
-                  />
-                </div>
-              )}
+    <div
+      className="min-h-screen flex items-center justify-center py-12 px-4"
+      style={{ direction: isRTL ? "rtl" : "ltr" }}
+    >
+      <div className="w-full max-w-lg">
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+          {/* Header with Gradient Background */}
+          <div className="w-full bg-third   py-10 flex flex-col items-center justify-center">
+            {/* Logo */}
+            {logo && (
+              <div className="mb-5">
+                <img
+                  src={logo}
+                  alt="Company Logo"
+                  className="h-20 w-auto object-contain"
+                />
+              </div>
+            )}
 
-              {/* Text */}
-              <p className="text-gray-800 font-medium text-center px-6">
-                {t("linkTree.connectText") ||
-                  "Connect with us on your favorite platform"}
-              </p>
-            </div>
+            {/* Text */}
+            <p className="text-gray-800 font-medium text-center px-6">
+              {t("linkTree.connectText") ||
+                "Connect with us on your favorite platform"}
+            </p>
+          </div>
 
-            {/* Social Media Buttons */}
-            <div className="p-6 space-y-3">
-              {socialLinks.map((link, index) => {
-                const IconComponent = link.icon;
-                return (
-                  <Link
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-between  gap-10  px-5 py-4 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-sm transition-all duration-200 cursor-pointer ${
-                      isRTL ? "" : ""
-                    }`}
+          {/* Social Media Buttons */}
+          <div className="p-6 space-y-3">
+            {socialLinks.map((link, index) => {
+              const IconComponent = link.icon;
+              return (
+                <Link
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-between  gap-10  px-5 py-4 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-sm transition-all duration-200 cursor-pointer ${
+                    isRTL ? "" : ""
+                  }`}
+                >
+                  {/* Icon */}
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-white flex-shrink-0 ${link.color}`}
                   >
-                    {/* Icon */}
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center text-white flex-shrink-0 ${link.color}`}
-                    >
-                      <IconComponent className="w-6 h-6" />
-                    </div>
+                    <IconComponent className="w-6 h-6" />
+                  </div>
 
-                    {/* Platform Name */}
-                    <span className="text-gray-800 font-bold flex-1">
-                      {link.name}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
+                  {/* Platform Name */}
+                  <span className="text-gray-800 font-bold flex-1">
+                    {link.name}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

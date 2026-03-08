@@ -1,5 +1,7 @@
 import { fetchSitemapRaw } from "../lib/server-api";
 
+export const revalidate = 3600; // Cache for 1 hour
+
 export async function GET() {
   const xml = await fetchSitemapRaw();
 

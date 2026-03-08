@@ -1,3 +1,4 @@
+"use client";
 import React, { useMemo } from "react";
 import { Link } from "../../i18n/routing";
 import { useTranslations, useLocale } from "next-intl";

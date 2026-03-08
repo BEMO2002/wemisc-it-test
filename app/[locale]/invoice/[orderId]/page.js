@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { fetchSettings } from "../../../../lib/server-api";
+import { fetchSettings } from "../../../lib/server-api";
 import Invoice from "../../../Checkout-Page/Invoice";
 
 export async function generateMetadata({ params }) {
