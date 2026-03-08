@@ -185,7 +185,9 @@
     "labelMath": "سؤال الرياضيات",
     "placeholderMath": "أدخل الجواب لسؤال الرياضيات",
     "errorMathRequired": "سؤال الرياضيات مطلوب",
-    "errorMathIncorrect": "سؤال الرياضيات غير صحيح"
+    "errorMathIncorrect": "سؤال الرياضيات غير صحيح",
+    "description": "تواصل معنا لأي أسئلة أو استفسارات",
+    "honeypotLabel": "اترك هذا الحقل فارغاً"
   },
   "footer": {
     "companyName": "شركة ويمسك للدورات التعليمية",

@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useRouter } from "../../i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
 import toast from "react-hot-toast";
 import {
   RiSecurePaymentLine,
@@ -10,9 +12,10 @@ import {
 import { MdOutlineCancel } from "react-icons/md";
 
 const PaymentCanceled = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === "ar";
-  const navigate = useNavigate();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === "ar";
+  const router = useRouter();
 
   const [secondsLeft, setSecondsLeft] = useState(10);
   const toastIdRef = useRef(null);
@@ -33,7 +36,7 @@ const PaymentCanceled = () => {
           </div>
         </div>
       ),
-      { id: "payment-cancel-toast", duration: 10000 }
+      { id: "payment-cancel-toast", duration: 10000 },
     );
 
     const intervalId = setInterval(() => {
@@ -42,7 +45,7 @@ const PaymentCanceled = () => {
 
         if (next <= 0 && !redirectedRef.current) {
           redirectedRef.current = true;
-          navigate("/Checkout", { replace: true });
+          router.replace("/checkout");
         }
         return next;
       });
@@ -52,7 +55,7 @@ const PaymentCanceled = () => {
       clearInterval(intervalId);
       toast.dismiss("payment-cancel-toast");
     };
-  }, [navigate, t, isRTL]);
+  }, [router, t, isRTL]);
 
   // Update toast text when secondsLeft changes
   useEffect(() => {
@@ -69,7 +72,7 @@ const PaymentCanceled = () => {
           </div>
         </div>
       ),
-      { id: "payment-cancel-toast" }
+      { id: "payment-cancel-toast" },
     );
   }, [secondsLeft, t, isRTL]);
 
@@ -119,7 +122,7 @@ const PaymentCanceled = () => {
           {/* Action Buttons */}
           <div className="flex flex-col gap-3">
             <button
-              onClick={() => navigate("/services")}
+              onClick={() => router.push("/services")}
               className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-gray-800 active:scale-[0.98]"
             >
               <RiShoppingBagLine className="text-lg" />
@@ -127,7 +130,7 @@ const PaymentCanceled = () => {
             </button>
 
             <button
-              onClick={() => navigate("/", { replace: true })}
+              onClick={() => router.replace("/")}
               className="flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-4 text-sm font-bold text-gray-700 transition-all hover:bg-gray-50 hover:border-gray-300 active:scale-[0.98]"
             >
               <RiHome4Line className="text-lg" />

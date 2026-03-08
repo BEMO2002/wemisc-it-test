@@ -1,8 +1,12 @@
 "use client";
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import axios from "axios";
 import { useTranslations, useLocale } from "next-intl";
-import { ApiAuthContext } from "../../AuthContext";
+import {
+  checkCoupon,
+  createCheckout,
+  fetchPaymentMethods,
+  uploadReceipt,
+} from "../lib/server-api";
 import { useCart } from "../Context/CartContextBase";
 import { useRouter, Link } from "../../i18n/routing";
 import toast from "react-hot-toast";
@@ -11,7 +15,6 @@ const Checkout = () => {
   const t = useTranslations();
   const locale = useLocale();
   const isRTL = locale === "ar";
-  const { XTenantID, XApiKey, baseUrl } = useContext(ApiAuthContext);
   const { items, subTotal, clearCart } = useCart();
   const router = useRouter();
 
@@ -34,14 +37,6 @@ const Checkout = () => {
   const [uploadingReceipt, setUploadingReceipt] = useState(false);
 
   const isCartEmpty = !items || items.length === 0;
-
-  const headers = useMemo(
-    () => ({
-      "X-Tenant-ID": XTenantID,
-      "X-API-KEY": XApiKey,
-    }),
-    [XTenantID, XApiKey],
-  );
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -71,11 +66,8 @@ const Checkout = () => {
     const fetchMethods = async () => {
       setLoadingMethods(true);
       try {
-        const res = await axios.get(`${baseUrl}/payment-methods`, {
-          headers,
-        });
+        const allMethods = await fetchPaymentMethods();
         // Filter only active payment methods (status === 1)
-        const allMethods = res.data?.data || [];
         const activeMethods = allMethods.filter(
           (method) => method.status === 1,
         );
@@ -109,7 +101,7 @@ const Checkout = () => {
       }
     };
     fetchMethods();
-  }, [baseUrl, headers]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -122,47 +114,26 @@ const Checkout = () => {
       return;
     }
     try {
-      const res = await axios.post(
-        `${baseUrl}/check-coupon`,
-        {
-          coupon_code: form.coupon_code.trim(),
-          items: items.map((it) => ({
-            item_id: Number(it.item_id),
-            attendees: Number(it.attendees),
-          })),
-        },
-        { headers },
-      );
+      const response = await checkCoupon(form.coupon_code, items);
 
-      // Check if response is successful (code 200)
-      if (res.data?.code === 200 && res.data?.data) {
-        setCouponResult(res.data.data);
+      if (response.ok) {
+        const resData = await response.json();
+        setCouponResult(resData.data);
         toast.success(
           t("checkout.couponApplied", "Coupon applied successfully"),
         );
       } else {
         // If code is not 200, treat as error
         setCouponResult(null);
+        const errorData = await response.json().catch(() => ({}));
         const errorMsg =
-          res.data?.coupon_code ||
-          t("checkout.couponError", "Invalid coupon code");
+          errorData.message || t("checkout.couponError", "Invalid coupon code");
         toast.error(errorMsg);
       }
     } catch (e) {
       console.error("Failed to apply coupon", e);
       setCouponResult(null);
-
-      // Handle validation errors (422)
-      if (e.response?.status === 422) {
-        const validationErrors = e.response?.data?.data || {};
-        const errorMessages = Object.values(validationErrors).flat();
-        const errorMessage =
-          errorMessages.join(", ") ||
-          t("checkout.couponError", "Invalid coupon code");
-        toast.error(errorMessage);
-      } else {
-        toast.error(t("checkout.couponError", "Invalid coupon code"));
-      }
+      toast.error(t("checkout.couponError", "Invalid coupon code"));
     }
   };
 
@@ -226,11 +197,14 @@ const Checkout = () => {
       console.log("Checkout payload:", payload);
       console.log("Selected payment method:", selectedMethod);
 
-      const res = await axios.post(`${baseUrl}/checkout`, payload, {
-        headers,
-      });
+      const response = await createCheckout(payload);
+      const resData = await response.json();
 
-      const data = res.data?.data;
+      if (!response.ok) {
+        throw new Error(resData.message || "Checkout failed");
+      }
+
+      const data = resData.data;
       if (!data) {
         throw new Error("No data in checkout response");
       }
@@ -311,18 +285,22 @@ const Checkout = () => {
     formData.append("receipt", selectedReceiptFile);
 
     try {
-      const res = await axios.post(`${baseUrl}/upload-receipt`, formData, {
-        headers,
-      });
-      toast.success(
-        res.data?.message ||
-          t("checkout.receiptUploaded", "Receipt uploaded successfully"),
-      );
-      setShowInstapayModal(false);
-      setSelectedReceiptFile(null);
-      setReceiptPreview(null);
-      clearCart();
-      router.push(`/invoice?order_id=${instapayData.order_id}`);
+      const response = await uploadReceipt(formData);
+      const resData = await response.json();
+
+      if (response.ok) {
+        toast.success(
+          resData.message ||
+            t("checkout.receiptUploaded", "Receipt uploaded successfully"),
+        );
+        setShowInstapayModal(false);
+        setSelectedReceiptFile(null);
+        setReceiptPreview(null);
+        clearCart();
+        router.push(`/invoice/${instapayData.order_id}`);
+      } else {
+        throw new Error(resData.message || "Upload failed");
+      }
     } catch (e) {
       console.error("Upload receipt error", e);
       toast.error(

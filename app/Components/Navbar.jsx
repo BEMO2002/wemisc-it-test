@@ -1,17 +1,19 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import React from "react";
 import { Link, usePathname, useRouter } from "../../i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
 import { useSettings } from "../Context/SettingContext";
-// import Droplist from "./Droplist";
+
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useCart } from "../Context/CartContextBase";
+import Droplist from "./Droplist";
 // US Flag Component
 const USFlag = ({ className = "w-6 h-4" }) => {
-  const uniqueId = Math.random().toString(36).substr(2, 9);
+  const id = useId();
+  const uniqueId = id.replace(/:/g, ""); // Remove colons for SVG compatibility
   return (
     <div
       className={`${className} relative rounded-sm shadow-sm border border-gray-200 overflow-hidden`}
@@ -169,9 +171,9 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-white shadow-sm backdrop-blur-sm fixed top-0 left-0 right-0 z-50 py-4 px-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between space-x-8  items-center h-16">
+    <nav className="bg-white shadow-sm backdrop-blur-sm fixed top-0 left-0 right-0 z-50 py-4 md:px-6 px-2">
+      <div className="max-w-7xl mx-auto md:px-4 px-2 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="flex-shrink-0">
             <Link href="/" onClick={closeMenu} className="flex items-center">
@@ -179,7 +181,7 @@ const Navbar = () => {
                 <img
                   src={settings.main_logo_light}
                   alt="Logo"
-                  className="md:w-40 w-35 object-cover"
+                  className="md:w-40 w-36 object-contain"
                 />
               )}
               {/* <img src={logo} alt="Logo" className="w-40 object-cover" /> */}
@@ -213,12 +215,12 @@ const Navbar = () => {
                   }`}
                 ></span>
               </button>
-              {/* <Droplist open={isMegaOpen} onClose={closeMega} align="center" /> */}
+              <Droplist open={isMegaOpen} onClose={closeMega} align="center" />
             </div>
           </div>
 
           {/* Language Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center md:space-x-6 space-x-3">
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
@@ -238,7 +240,7 @@ const Navbar = () => {
               <div className="relative">
                 <HiOutlineShoppingBag size={30} className="text-primary" />
                 {isMounted && items.length > 0 && (
-                  <span className=" text-sm font-medium bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center absolute -top-2 -right-2">
+                  <span className="text-[10px] font-bold bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2 border-2 border-white">
                     {items.length}
                   </span>
                 )}
@@ -362,7 +364,6 @@ const Navbar = () => {
                   }`}
                 />
               </button>
-              {/* 
               <div className="mt-3">
                 <Droplist
                   open={isMegaMobileOpen}
@@ -372,7 +373,7 @@ const Navbar = () => {
                   }}
                   variant="mobile"
                 />
-              </div> */}
+              </div>
             </div>
             {/* Mobile Language Toggle */}
             <div

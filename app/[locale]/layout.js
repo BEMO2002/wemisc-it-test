@@ -9,6 +9,10 @@ import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import Footer from "../Components/Footer";
 import { fetchSettings } from "../lib/server-api";
+import PixelScripts from "../Components/PixelScripts";
+import ScrollToTop from "../Components/ScrollToTop";
+import { Top } from "../Components/Top";
+// import Loader from "../Components/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,8 +80,12 @@ export default async function RootLayout(props) {
       >
         <NextIntlClientProvider messages={messages}>
           <Providers initialSettings={globalSettings}>
+            {/* <Loader /> */}
+            <PixelScripts />
+            <ScrollToTop />
+            <Top />
             <Navbar />
-            <main className="">{children}</main>
+            <main>{children}</main>
             <Footer />
           </Providers>
         </NextIntlClientProvider>

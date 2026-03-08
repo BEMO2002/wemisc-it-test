@@ -13,15 +13,13 @@ import {
 } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl";
 import toast from "react-hot-toast";
-import axios from "axios";
-import { ApiAuthContext } from "../../AuthContext";
+import { subscribeNewsletter } from "../lib/server-api";
 import { useSettings } from "../Context/SettingContext";
 import { Link } from "../../i18n/routing";
 import wave from "../../public/Home/footer_shape_1.png";
 const Footer = () => {
   const t = useTranslations();
   const locale = useLocale();
-  const { XTenantID, XApiKey, baseUrl } = useContext(ApiAuthContext);
   const { settings } = useSettings();
 
   // Newsletter subscription state
@@ -189,20 +187,9 @@ const Footer = () => {
         extra_key: null,
       });
 
-      const response = await axios.post(
-        `${baseUrl}/subscribes`,
-        { email: email.trim(), extra_key: null },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "X-Tenant-ID": XTenantID,
-            "X-API-KEY": XApiKey,
-          },
-          timeout: 10000,
-        },
-      );
+      const response = await subscribeNewsletter(email);
 
-      if (response.status === 200 || response.status === 201) {
+      if (response.ok) {
         toast.success(t("footer.newsletterSuccess"), {
           position: isRTL ? "top-left" : "top-right",
           autoClose: 5000,
@@ -357,21 +344,21 @@ const Footer = () => {
                     {t("navbar.links")}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/accreditations"
                     className="text-black hover:text-secondary transition-colors duration-200 text-md"
                   >
                     {t("footer.accreditations")}
                   </Link>
-                </li>
+                </li> */}
                 <li>
-                  <Link
+                  <a
                     href="/sitemap"
                     className="text-black hover:text-secondary transition-colors duration-200 text-md"
                   >
                     {t("footer.sitemap", "Sitemap")}
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

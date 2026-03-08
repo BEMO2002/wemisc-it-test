@@ -161,7 +161,9 @@
     "labelMath": "Math Question",
     "placeholderMath": "Enter the answer to the math question",
     "errorMathRequired": "Math question is required",
-    "errorMathIncorrect": "Math question is incorrect"
+    "errorMathIncorrect": "Math question is incorrect",
+    "description": "Contact us for any questions or inquiries",
+    "honeypotLabel": "Leave this field empty"
   },
   "footer": {
     "companyName": "Wemisc Company - Courses ",

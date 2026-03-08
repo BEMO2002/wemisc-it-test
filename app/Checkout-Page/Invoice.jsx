@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useSearchParams } from "next/navigation";
 import { Link } from "../../i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
-import { ApiAuthContext } from "../../AuthContext";
+import { fetchOrderDetails } from "../lib/server-api";
 import { useCart } from "../Context/CartContextBase";
 
 const Invoice = () => {
@@ -12,7 +12,6 @@ const Invoice = () => {
   const t = useTranslations();
   const locale = useLocale();
   const isRTL = locale === "ar";
-  const { XTenantID, XApiKey, baseUrl } = useContext(ApiAuthContext);
   const { clearCart } = useCart();
 
   const [order, setOrder] = useState(null);
@@ -35,13 +34,7 @@ const Invoice = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`${baseUrl}/order/${orderId}`, {
-          headers: {
-            "X-Tenant-ID": XTenantID,
-            "X-API-KEY": XApiKey,
-          },
-        });
-        const orderData = res.data?.data || null;
+        const orderData = await fetchOrderDetails(orderId);
         setOrder(orderData);
 
         // Clear cart after successful order load (for credit card payments)
@@ -56,7 +49,7 @@ const Invoice = () => {
       }
     };
     fetchOrder();
-  }, [paramOrderId, searchParams, baseUrl, XTenantID, XApiKey, t, clearCart]);
+  }, [paramOrderId, searchParams, t, clearCart]);
 
   const handlePrint = () => {
     window.print();

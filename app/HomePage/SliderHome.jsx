@@ -34,7 +34,7 @@ const SliderHome = ({ initialSliders = [] }) => {
   return (
     <>
       {/* Slider Component */}
-      <div className="relative pt-10 h-screen overflow-hidden">
+      <div className="relative pt-32 md:pt-10 h-screen overflow-hidden">
         <img
           src="/Home/about_4_3.png"
           alt="spinner"
@@ -71,8 +71,8 @@ const SliderHome = ({ initialSliders = [] }) => {
         >
           {sliders.map((slider) => (
             <SwiperSlide key={slider.id}>
-              <div className="relative h-screen w-full max-w-[1600px] mx-auto">
-                <div className="h-full flex flex-col lg:flex-row gap-5 items-center justify-center">
+              <div className="relative h-full w-full max-w-[1600px] mx-auto">
+                <div className="h-full flex flex-col lg:flex-row gap-4 items-center justify-start lg:justify-center pt-4 md:pt-0">
                   {/* Text Content - Left Side */}
                   <div
                     className={`flex items-center justify-center p-8 lg:p-12 ${
@@ -85,14 +85,14 @@ const SliderHome = ({ initialSliders = [] }) => {
                       }`}
                     >
                       {/* Title */}
-                      <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-baseTwo mb-6 leading-tight">
+                      <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-baseTwo mb-4 leading-tight">
                         <span className="">
                           {isRTL ? slider.title_ar : slider.title_en}
                         </span>
                       </h1>
 
                       {/* Description */}
-                      <p className="text-gray-500 text-lg md:text-xl mb-8 leading-relaxed">
+                      <p className="text-gray-500 text-base md:text-xl mb-6 leading-relaxed line-clamp-3 md:line-clamp-none">
                         {isRTL
                           ? slider.meta_description_ar
                           : slider.meta_description_en}
@@ -125,7 +125,7 @@ const SliderHome = ({ initialSliders = [] }) => {
                       isRTL ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
-                    <div className="relative w-full h-full lg:h-[560px] lg:max-h-full">
+                    <div className="relative w-full h-[35vh] lg:h-[560px] lg:max-h-full">
                       {/* Check if banner is video or image */}
                       {(() => {
                         const bannerUrl = isRTL

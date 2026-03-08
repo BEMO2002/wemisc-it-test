@@ -287,3 +287,210 @@ export async function fetchCategoryBlogs(categoryId, params = {}) {
     return null;
   }
 }
+
+/**
+ * Submit contact form data
+ */
+export async function submitContactForm(formData) {
+  try {
+    const res = await fetch(`${baseUrl}/contact-us`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      body: JSON.stringify({ ...formData, extra_key: null }),
+    });
+
+    return res;
+  } catch (err) {
+    console.error("submitContactForm Error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Newsletter subscription
+ */
+export async function subscribeNewsletter(email) {
+  try {
+    const res = await fetch(`${baseUrl}/subscribes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      body: JSON.stringify({ email: email.trim(), extra_key: null }),
+    });
+
+    return res;
+  } catch (err) {
+    console.error("subscribeNewsletter Error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Check coupon validity
+ */
+export async function checkCoupon(couponCode, items) {
+  try {
+    const res = await fetch(`${baseUrl}/check-coupon`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      body: JSON.stringify({
+        coupon_code: couponCode.trim(),
+        items: items.map((it) => ({
+          item_id: Number(it.item_id),
+          attendees: Number(it.attendees),
+        })),
+      }),
+    });
+
+    return res;
+  } catch (err) {
+    console.error("checkCoupon Error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Create checkout/order
+ */
+export async function createCheckout(payload) {
+  try {
+    const res = await fetch(`${baseUrl}/checkout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return res;
+  } catch (err) {
+    console.error("createCheckout Error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Upload receipt image
+ */
+export async function uploadReceipt(formData) {
+  try {
+    const res = await fetch(`${baseUrl}/upload-receipt`, {
+      method: "POST",
+      headers: {
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      body: formData,
+    });
+
+    return res;
+  } catch (err) {
+    console.error("uploadReceipt Error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Fetch available payment methods
+ */
+export async function fetchPaymentMethods() {
+  try {
+    const res = await fetch(`${baseUrl}/payment-methods`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json?.data || [];
+  } catch (err) {
+    console.error("fetchPaymentMethods Error:", err);
+    return [];
+  }
+}
+
+/**
+ * Fetch pixels and scripts from backend
+ */
+export async function fetchPixelsScripts() {
+  try {
+    const res = await fetch(`${baseUrl}/pixels-scripts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json?.data || [];
+  } catch (err) {
+    console.error("fetchPixelsScripts Error:", err);
+    return [];
+  }
+}
+
+/**
+ * Fetch order details by ID
+ */
+export async function fetchOrderDetails(orderId) {
+  try {
+    const res = await fetch(`${baseUrl}/order/${orderId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+    });
+
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data || null;
+  } catch (err) {
+    console.error("fetchOrderDetails Error:", err);
+    return null;
+  }
+}
+/**
+ * Fetch raw sitemap XML from backend
+ */
+export async function fetchSitemapRaw() {
+  try {
+    const res = await fetch(`${baseUrl}/generate-sitemap`, {
+      method: "GET",
+      headers: {
+        "X-Tenant-ID": tenantId,
+        "X-API-KEY": apiKey,
+      },
+      next: { revalidate: 3600 }, // Cache sitemap for 1 hour
+    });
+
+    if (!res.ok) return null;
+    return await res.text();
+  } catch (err) {
+    console.error("fetchSitemapRaw Error:", err);
+    return null;
+  }
+}

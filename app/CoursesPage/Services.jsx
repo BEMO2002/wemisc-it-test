@@ -9,6 +9,7 @@ import {
   fetchItemTypes,
   fetchItemTypeItems,
 } from "../lib/server-api";
+import ParticleNetwork from "../Components/ParticleNetwork";
 const Services = () => {
   const t = useTranslations();
   const locale = useLocale();
@@ -182,7 +183,7 @@ const Services = () => {
     <>
       <section className="relative  pt-16 px-4 md:px-8 min-h-screen overflow-hidden  py-10">
         {/* Animated Particle Network Background */}
-        {/* <ParticleNetwork /> */}
+        <ParticleNetwork />
 
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* <div className="text-center mb-12 flex flex-col items-center">
