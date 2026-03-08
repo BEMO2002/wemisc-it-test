@@ -201,7 +201,7 @@ const Blogs = () => {
     <section className="pt-24 py-10 px-4 md:px-8 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 flex flex-col items-center">
+        {/* <div className="text-center mb-12 flex flex-col items-center">
           <h2 className="text-4xl text-primary md:text-5xl font-bold mb-2">
             {t("blogs.title2")}
           </h2>
@@ -228,7 +228,7 @@ const Blogs = () => {
               />
             </motion.svg>
           </div>
-        </div>
+        </div> */}
 
         {/* Search and Pagination Stats */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
